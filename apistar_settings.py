@@ -22,14 +22,17 @@ class SettingsComponent(Component):
     """
 
     def __init__(self, properties: Dict[str, validators.Validator], defaults: dict = None) -> None:
+        required = []
         settings = defaults or {}
-        required = [name for name, prop in properties.items() if not prop.has_default()]
-        validator = validators.Object(properties, required=required)
-        for name in validator.properties:
-            value = os.getenv(name.upper())
+        for name, prop in properties.items():
+            value = os.getenv(name)
             if value is not None:
                 settings[name] = value
 
+            if not prop.has_default():
+                required.append(name)
+
+        validator = validators.Object(properties, required=required)
         self.settings = validator.validate(settings, allow_coerce=True)
 
     def can_handle_parameter(self, parameter: Parameter) -> bool:
