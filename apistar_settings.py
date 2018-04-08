@@ -33,7 +33,7 @@ class SettingsComponent(Component):
                 required.append(name)
 
         validator = validators.Object(properties, required=required)
-        self.settings = validator.validate(settings, allow_coerce=True)
+        self.settings = Settings(validator.validate(settings, allow_coerce=True))
 
     def can_handle_parameter(self, parameter: Parameter) -> bool:
         # Micro-optimization given that we know that this component
