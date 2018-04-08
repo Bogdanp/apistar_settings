@@ -1,0 +1,17 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+apistar = {git = "https://github.com/encode/apistar.git", editable = true, ref = "level-up"}
+
+[dev-packages]
+pytest = "*"
+pytest-cov = "*"
+bumpversion = "*"
+twine = "*"
+pytest-env = "*"
+
+[requires]
+python_version = "3.6"
