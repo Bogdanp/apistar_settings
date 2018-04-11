@@ -5,7 +5,7 @@ from inspect import Parameter
 from typing import Dict
 
 __all__ = ["Settings", "SettingsComponent", "__version__"]
-__version__ = "0.0.2"
+__version__ = "0.1.0"
 
 
 class Settings(dict):
