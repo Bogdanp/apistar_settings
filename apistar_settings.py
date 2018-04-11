@@ -2,7 +2,7 @@ import os
 
 from apistar import Component, validators
 from inspect import Parameter
-from typing import Dict
+from typing import Any, Dict
 
 __all__ = ["Settings", "SettingsComponent", "__version__"]
 __version__ = "0.1.0"
@@ -42,3 +42,12 @@ class SettingsComponent(Component):
 
     def resolve(self) -> Settings:
         return self.settings
+
+    def __getattr__(self, name: str) -> Any:
+        return getattr(self.settings, name)
+
+    def __getitem__(self, name: str) -> Any:
+        return self.settings[name]
+
+    def __setitem__(self, name: str, value: Any) -> None:
+        self.settings[name] = value

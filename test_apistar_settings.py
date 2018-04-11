@@ -12,11 +12,13 @@ routes = [
     Route("/", method="GET", handler=index),
 ]
 
+settings = settings_component = SettingsComponent({
+    "APP_NAME": validators.String(),
+    "WORKERS": validators.Integer(default=10),
+})
+
 components = [
-    SettingsComponent({
-        "APP_NAME": validators.String(),
-        "WORKERS": validators.Integer(default=10),
-    }),
+    settings_component,
 ]
 
 
@@ -40,3 +42,15 @@ def test_settings_component_can_inject_settings(client):
         "APP_NAME": "example",
         "WORKERS": 2,
     }
+
+
+def test_settings_component_can_itself_be_used_to_access_settings():
+    # Given that I have a settings component
+    # When I try to get a setting from it
+    assert settings["APP_NAME"] == "example"
+
+    # When I try to update a setting though the component
+    settings["APP_NAME"] = "test"
+
+    # Then that setting should be updated
+    assert settings["APP_NAME"] == "test"
