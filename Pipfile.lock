@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4de31f8fd443aeeeff2258dce30bb412cba11dd3a7b2b7f5b62a49a37448e01f"
+            "sha256": "c6f3272f95da1e2720f9fcb30a8a14e9c7197a2f6302bb8c005b0226f97576ab"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -17,9 +17,11 @@
     },
     "default": {
         "apistar": {
-            "editable": true,
-            "git": "https://github.com/encode/apistar.git",
-            "ref": "d4490d2485ea3c5e8a71349219bdbba6dc4d60d6"
+            "hashes": [
+                "sha256:da2a33c5ecc996f47ffa2d53393dd764be5dc4ee85f1b06f201044dd01b2dff1"
+            ],
+            "index": "pypi",
+            "version": "==0.4"
         },
         "attrs": {
             "hashes": [

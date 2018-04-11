@@ -25,7 +25,7 @@ setup(
     long_description="Visit https://github.com/Bogdanp/apistar_settings for more information.",
     packages=[],
     py_modules=["apistar_settings"],
-    install_requires=[],
+    install_requires=["apistar>=0.4"],
     python_requires=">=3.5",
     include_package_data=True,
 )
